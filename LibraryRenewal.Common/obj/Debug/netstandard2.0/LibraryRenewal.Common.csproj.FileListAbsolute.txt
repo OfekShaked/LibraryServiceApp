@@ -1,0 +1,10 @@
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\bin\Debug\netstandard2.0\LibraryRenewal.Common.deps.json
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\bin\Debug\netstandard2.0\LibraryRenewal.Common.dll
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\bin\Debug\netstandard2.0\LibraryRenewal.Common.pdb
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\obj\Debug\netstandard2.0\LibraryRenewal.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\obj\Debug\netstandard2.0\LibraryRenewal.Common.AssemblyInfoInputs.cache
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\obj\Debug\netstandard2.0\LibraryRenewal.Common.AssemblyInfo.cs
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\obj\Debug\netstandard2.0\LibraryRenewal.Common.csproj.CoreCompileInputs.cache
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\obj\Debug\netstandard2.0\LibraryRenewal.Common.dll
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\obj\Debug\netstandard2.0\LibraryRenewal.Common.pdb
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Common\obj\Debug\netstandard2.0\LibraryRenewal.Common.csproj.AssemblyReference.cache
