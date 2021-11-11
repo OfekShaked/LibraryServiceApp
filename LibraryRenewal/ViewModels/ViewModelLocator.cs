@@ -62,6 +62,9 @@ namespace LibraryRenewal.ViewModels
             nav.Configure("ManagerMainPage", typeof(ManagerMainPage));
             nav.Configure("MainPage", typeof(MainPage));
             nav.Configure("DisplayBookOptionsPage", typeof(DisplayBookOptionsPage));
+            nav.Configure("RegisterPage", typeof(RegisterPage));
+            nav.Configure("ReportPage", typeof(ReportPage));
+
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
         }

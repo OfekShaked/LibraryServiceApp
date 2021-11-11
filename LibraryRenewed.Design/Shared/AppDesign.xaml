@@ -20,4 +20,34 @@
         <Setter Property="Foreground" Value="#FF00ADB5"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
+    <Style x:Key="ListViewTableStyleSelected" TargetType="ListViewItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <ListViewItemPresenter
+                            CheckBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" 
+                       CheckMode="Inline" 
+                       ContentTransitions="{TemplateBinding ContentTransitions}" 
+                       CheckBoxBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" 
+                       DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}" 
+                       DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}" 
+                       DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" 
+                       DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}" 
+                       FocusBorderBrush="{ThemeResource SystemControlForegroundAltHighBrush}" 
+                       FocusSecondaryBorderBrush="{ThemeResource SystemControlForegroundBaseHighBrush}" 
+                       PointerOverForeground="{ThemeResource SystemControlHighlightAltBaseHighBrush}"
+                       PressedBackground="{ThemeResource SystemControlHighlightListMediumBrush}"
+                       PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}"
+                       PointerOverBackground="{ThemeResource SystemControlHighlightListLowBrush}"
+                       ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" 
+                       SelectedPressedBackground="{ThemeResource SystemControlHighlightListAccentHighBrush}"
+                       SelectionCheckMarkVisualEnabled="True" 
+                       SelectedForeground="{ThemeResource SystemControlHighlightAltBaseHighBrush}"
+                       SelectedPointerOverBackground="{ThemeResource SystemControlHighlightListAccentMediumBrush}" 
+                       SelectedBackground="{ThemeResource SystemControlHighlightListAccentLowBrush}"
+                       ContentMargin="0" Padding="0"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
