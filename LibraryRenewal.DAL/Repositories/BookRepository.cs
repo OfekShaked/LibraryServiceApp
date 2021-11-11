@@ -3,6 +3,7 @@ using LibraryRenewal.DAL.Exceptions;
 using LibraryRenewal.DAL.Interfaces;
 using LibraryRenewal.DAL.Interfaces.Converters;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,6 @@ namespace LibraryRenewal.DAL.Repositories
         }
         public async Task<Book> GetBook(int itemID)
         {
-            List<Book> books = new List<Book>();
             try
             {
                 var bookFound = _context.AbstractItems.FirstOrDefault(x => x.ItemId == itemID && x.Subject == null);
@@ -60,7 +60,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.AbstractItems.Add(_bookConverter.BookToBookDTO(book));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {
@@ -73,7 +73,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.AbstractItems.Remove(_context.AbstractItems.FirstOrDefault(x => x.ItemId == book.ItemID));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {
@@ -87,8 +87,21 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 updatedBook.ItemID = id;
-                _context.AbstractItems.Update(_bookConverter.BookToBookDTO(updatedBook));
-                await _context.SaveChangesAsync();
+                var book = _bookConverter.BookToBookDTO(updatedBook);
+                var bookFromRep = _context.AbstractItems.FirstOrDefault(x => x.ItemId == id);
+                bookFromRep.Quantity = book.Quantity;
+                bookFromRep.Discount = book.Discount;
+                bookFromRep.Price = book.Price;
+                bookFromRep.Edition = book.Edition;
+                bookFromRep.IdofGenre = book.IdofGenre;
+                bookFromRep.Isbn = book.Isbn;
+                bookFromRep.Name = book.Name;
+                bookFromRep.PrintDate = book.PrintDate;
+                bookFromRep.Publisher = book.Publisher;
+                bookFromRep.Summary = book.Summary;
+                bookFromRep.Subject = book.Subject;
+                bookFromRep.Writer = book.Writer; 
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {

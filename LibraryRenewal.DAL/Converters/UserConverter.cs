@@ -10,6 +10,7 @@ namespace LibraryRenewal.DAL.Converters
     {
         public Common.Models.User UserDTOToUser(Models.User user)
         {
+            if (user == null) return null;
             return new Common.Models.User
             {
                 FullName = user.FullName,
@@ -23,6 +24,7 @@ namespace LibraryRenewal.DAL.Converters
 
         public Models.User UserToUserDTO(Common.Models.User user)
         {
+            if (user == null) return null;
             return new Models.User
             {
                 FullName = user.FullName,

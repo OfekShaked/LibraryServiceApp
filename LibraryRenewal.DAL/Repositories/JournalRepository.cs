@@ -3,6 +3,7 @@ using LibraryRenewal.DAL.Exceptions;
 using LibraryRenewal.DAL.Interfaces;
 using LibraryRenewal.DAL.Interfaces.Converters;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.AbstractItems.Add(_converter.JournalToJournalDTO(journal));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {
@@ -39,7 +40,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.AbstractItems.Remove(_converter.JournalToJournalDTO(journal));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {
@@ -83,8 +84,21 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 updatedJournal.ItemID = id;
-                _context.AbstractItems.Update(_converter.JournalToJournalDTO(updatedJournal));
-                await _context.SaveChangesAsync();
+                var journal = _converter.JournalToJournalDTO(updatedJournal);
+                var journalFromRep = _context.AbstractItems.FirstOrDefault(x => x.ItemId == id);
+                journalFromRep.Quantity = journal.Quantity;
+                journalFromRep.Discount = journal.Discount;
+                journalFromRep.Price = journal.Price;
+                journalFromRep.Edition = journal.Edition;
+                journalFromRep.IdofGenre = journal.IdofGenre;
+                journalFromRep.Isbn = journal.Isbn;
+                journalFromRep.Name = journal.Name;
+                journalFromRep.PrintDate = journal.PrintDate;
+                journalFromRep.Publisher = journal.Publisher;
+                journalFromRep.Summary = journal.Summary;
+                journalFromRep.Subject = journal.Subject;
+                journalFromRep.Writer = journal.Writer;
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {

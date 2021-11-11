@@ -1,6 +1,7 @@
 ﻿using LibraryRenewal.Common.Models;
 using LibraryRenewal.DAL.Interfaces;
 using LibraryRenewal.DAL.Interfaces.Converters;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace LibraryRenewal.DAL.Converters
         }
         public Book BookDTOToBook(Models.AbstractItem book)
         {
+            if (book == null) return null;
             Book bookToSend = new Book
             {
                 Genre = genreConverter.GenreDTOToGenre(context.Genres.FirstOrDefault(x => x.GenreId == book.IdofGenre)),
@@ -38,6 +40,7 @@ namespace LibraryRenewal.DAL.Converters
         }
         Models.AbstractItem IBookConverter.BookToBookDTO(Book book)
         {
+            if (book == null) return null;
             return new Models.AbstractItem
             {
                 Discount=book.Discount,
@@ -51,7 +54,7 @@ namespace LibraryRenewal.DAL.Converters
                 Publisher=book.Publisher,
                 Quantity=book.Quantity,
                 Summary=book.Summary,
-                Writer=book.Writer
+                Writer=book.Writer,
             };
         }
     }

@@ -1,5 +1,3 @@
-C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\LibraryRenewal.BLL.csproj.AssemblyReference.cache
-C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\LibraryRenewal.BLL.csproj.CoreCompileInputs.cache
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\bin\x86\Debug\LibraryRenewal.BLL.dll
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\bin\x86\Debug\LibraryRenewal.BLL.pdb
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\bin\x86\Debug\LibraryRenewal.BLL.pri
@@ -8,7 +6,8 @@ C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\bin\x86\Debug\L
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\bin\x86\Debug\Microsoft.UI.Xaml.Markup.winmd
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\bin\x86\Debug\LibraryRenewal.Common.pdb
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\bin\x86\Debug\LibraryRenewal.DAL.pdb
-C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\LibraryRenewal.BLL.csproj.CopyComplete
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\LibraryRenewal.BLL.csproj.AssemblyReference.cache
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\LibraryRenewal.BLL.csproj.CoreCompileInputs.cache
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\LibraryRenewal.BLL.dll
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\LibraryRenewal.BLL.pdb
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\priconfig.xml
@@ -26,3 +25,4 @@ C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\p
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\qualifiers.txt
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\obj\x86\Debug\LibraryRenewal.BLL.csproj.CopyComplete

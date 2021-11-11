@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryRenewed.Design.ViewModels
+namespace LibraryRenewal.ViewModels
 {
     public class RegisterPageViewModel : ViewModelBase
     {

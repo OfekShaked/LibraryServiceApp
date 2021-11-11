@@ -1,12 +1,16 @@
 ﻿using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
+using LibraryRenewal.Views;
+using LibraryRenewed.Design.Models;
+using LibraryRenewal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryRenewed.Design.ViewModels
+namespace LibraryRenewal.ViewModels
 {
     public class ViewModelLocator
     {
@@ -45,8 +49,7 @@ namespace LibraryRenewed.Design.ViewModels
                 return ServiceLocator.Current.GetInstance<ReportPageViewModel>();
             }
         }
-
-        static ViewModelLocator()
+        public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<DisplayBooksOptionsPageViewModel>();
@@ -54,6 +57,12 @@ namespace LibraryRenewed.Design.ViewModels
             SimpleIoc.Default.Register<ManagerMainPageViewModel>();
             SimpleIoc.Default.Register<RegisterPageViewModel>();
             SimpleIoc.Default.Register<ReportPageViewModel>();
+            SimpleIoc.Default.Register<NavigationData>();
+            var nav = new NavigationService();
+            nav.Configure("ManagerMainPage", typeof(ManagerMainPage));
+            nav.Configure("MainPage", typeof(MainPage));
+            nav.Configure("DisplayBookOptionsPage", typeof(DisplayBookOptionsPage));
+            SimpleIoc.Default.Register<INavigationService>(() => nav);
 
         }
     }

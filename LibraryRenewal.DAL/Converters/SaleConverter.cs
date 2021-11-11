@@ -9,6 +9,7 @@ namespace LibraryRenewal.DAL.Converters
     {
         public Models.Sale SaleToSaleDTO(Common.Models.Sale sale)
         {
+            if (sale == null) return null;
             return new Models.Sale
             {
                 SaleDate= sale.DateSold.ToString(),
@@ -20,6 +21,7 @@ namespace LibraryRenewal.DAL.Converters
         }
         public Common.Models.Sale SaleDTOToSale(Models.Sale sale)
         {
+            if (sale == null) return null;
             return new Common.Models.Sale
             {
                 DateSold= DateTime.Parse(sale.SaleDate),

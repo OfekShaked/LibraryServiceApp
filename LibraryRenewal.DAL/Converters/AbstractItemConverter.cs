@@ -1,5 +1,6 @@
 ﻿using LibraryRenewal.DAL.Interfaces;
 using LibraryRenewal.DAL.Interfaces.Converters;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace LibraryRenewal.DAL.Converters
         }
         public Common.Models.AbstractItem AbstractItemDTOToAbstractItem(Models.AbstractItem abstractItem)
         {
+            if (abstractItem == null) return null;
             return new Common.Models.Book
             {
                 Discount = (int)abstractItem.Discount,
@@ -37,6 +39,8 @@ namespace LibraryRenewal.DAL.Converters
 
         public Models.AbstractItem AbstractItemToAbstractItemDTO(Common.Models.AbstractItem abstractItem)
         {
+            if (abstractItem == null) return null;
+
             return new Models.AbstractItem
             {
                 Discount = abstractItem.Discount,

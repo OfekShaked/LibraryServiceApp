@@ -43,11 +43,10 @@ namespace LibraryRenewal.BLL.Services
             try
             {
                 Genre g1 = await _genreRep.GetGenre(genre);
-                if (g1.Name == null)
+                if (g1 == null)
                 {
-                    g1.Name = genre;
+                    g1 = new Genre(genre);
                     await _genreRep.AddGenre(g1);
-                    g1 = await _genreRep.GetGenre(genre);
                 }
                 b1.Genre = g1;
             }

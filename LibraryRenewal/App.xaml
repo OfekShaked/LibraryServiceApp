@@ -2,6 +2,15 @@
     x:Class="LibraryRenewal.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:LibraryRenewal">
-
+    xmlns:local="using:LibraryRenewal"
+    xmlns:vm="using:LibraryRenewal.ViewModels">
+    <Application.Resources>
+        <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator"></vm:ViewModelLocator>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///LibraryRenewed.Design/Shared/AppDesign.xaml"/>
+                <ResourceDictionary Source="ms-appx:///LibraryRenewed.Design/Shared/DisplayBookOptionsDesign.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryRenewal.Common", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestEf", "..\TestEf\TestEf.csproj", "{79811A92-5E1D-461A-81DB-9579AC671D9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryRenewed.Design", "..\LibraryRenewed.Design\LibraryRenewed.Design.csproj", "{4FA78EA0-84A1-4090-899B-5665E219A1BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryRenewal.Design", "..\LibraryRenewed.Design\LibraryRenewal.Design.csproj", "{4FA78EA0-84A1-4090-899B-5665E219A1BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

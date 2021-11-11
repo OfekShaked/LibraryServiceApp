@@ -3,6 +3,7 @@ using LibraryRenewal.DAL.Exceptions;
 using LibraryRenewal.DAL.Interfaces;
 using LibraryRenewal.DAL.Interfaces.Converters;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.Genres.Add(_converter.GenreToGenreDTO(genre));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {
@@ -39,7 +40,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.Genres.Remove(_context.Genres.FirstOrDefault(x => x.GenreId == genre.ID));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {
@@ -94,8 +95,9 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 updatedGenre.ID = genreID;
-                _context.Genres.Update(_converter.GenreToGenreDTO(updatedGenre));
-                await _context.SaveChangesAsync();
+                var genre = _context.Genres.FirstOrDefault(x => x.GenreId == genreID);
+                genre.GenreName = updatedGenre.Name;
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {

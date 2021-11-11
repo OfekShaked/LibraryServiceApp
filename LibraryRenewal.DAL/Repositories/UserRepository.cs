@@ -4,6 +4,7 @@ using LibraryRenewal.DAL.Exceptions;
 using LibraryRenewal.DAL.Interfaces;
 using LibraryRenewal.DAL.Interfaces.Converters;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.Users.Add(_converter.UserToUserDTO(user));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {
@@ -41,7 +42,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.Users.Remove(_converter.UserToUserDTO(user));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {
@@ -86,7 +87,7 @@ namespace LibraryRenewal.DAL.Repositories
                 updated.FullName = updatedUser.FullName;
                 updated.PhoneNumber = updatedUser.PhoneNumber;
                 updated.UserType = updatedUser.Type.ToString();
-                _context.Users.Update(updated);
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {

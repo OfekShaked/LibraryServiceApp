@@ -13,6 +13,7 @@ namespace LibraryRenewal.DAL.Interfaces
         DbSet<Sale> Sales { get; set; }
         DbSet<User> Users { get; set; }
         DbSet<Genre> Genres { get; set; }
-        Task<int> SaveChangesAsync();
+        Task<int> SaveChangesAsyncInherited();
+        void DetachEntity<T>(T entity);
     }
 }

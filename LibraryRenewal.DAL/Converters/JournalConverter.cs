@@ -1,6 +1,7 @@
 ﻿using LibraryRenewal.Common.Models;
 using LibraryRenewal.DAL.Interfaces;
 using LibraryRenewal.DAL.Interfaces.Converters;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace LibraryRenewal.DAL.Converters
         }
         public Journal JournalDTOToJournal(Models.AbstractItem journal)
         {
+            if (journal == null) return null;
             Journal journalToSend = new Journal
             {
                 Genre = genreConverter.GenreDTOToGenre(context.Genres.FirstOrDefault(x => x.GenreId == journal.IdofGenre)),
@@ -38,6 +40,7 @@ namespace LibraryRenewal.DAL.Converters
 
         public Models.AbstractItem JournalToJournalDTO(Journal journal)
         {
+            if (journal == null) return null;
             return new Models.AbstractItem
             {
                 Discount=journal.Discount,

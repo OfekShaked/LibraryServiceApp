@@ -283,12 +283,12 @@ namespace LibraryRenewal.BLL.Services
             bool isStarted = false;
             try
             {
-                if (year != "")
+                if (!String.IsNullOrEmpty(year))
                 {
                     matchingItems = GetAllByYear(int.Parse(year), biggerOrSmallerYear, await GetAllItems());
                     isStarted = true;
                 }
-                if (publisher != "")
+                if (publisher != null)
                 {
                     if (isStarted == false)
                     {
@@ -300,7 +300,7 @@ namespace LibraryRenewal.BLL.Services
                         matchingItems = GetAllByPublisher(publisher, matchingItems);
                     }
                 }
-                if (writer != "")
+                if (!String.IsNullOrEmpty(writer))
                 {
                     if (isStarted == false)
                     {
@@ -312,7 +312,7 @@ namespace LibraryRenewal.BLL.Services
                         matchingItems = GetAllByAuther(writer, matchingItems);
                     }
                 }
-                if (genre != "")
+                if (!String.IsNullOrEmpty(genre))
                 {
                     if (isStarted == false)
                     {
@@ -326,7 +326,7 @@ namespace LibraryRenewal.BLL.Services
                         matchingItems = GetAllByGenre(g1, matchingItems);
                     }
                 }
-                if (discount != "")
+                if (!String.IsNullOrEmpty(discount))
                 {
                     if (isStarted == false)
                     {
@@ -338,7 +338,7 @@ namespace LibraryRenewal.BLL.Services
                         matchingItems = GetAllByDiscount(int.Parse(discount), biggerOrSmallerDisc, matchingItems);
                     }
                 }
-                if (name != "")
+                if (!String.IsNullOrEmpty(name))
                 {
                     if (isStarted == false)
                     {

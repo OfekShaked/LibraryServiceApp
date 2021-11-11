@@ -1,6 +1,4 @@
-﻿using LibraryRenewal.DAL.Models;
-using LibraryRenewal.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,20 +22,14 @@ namespace LibraryRenewal
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        LibraryDbContext cob;
         public MainPage()
         {
             this.InitializeComponent();
-            cob = new LibraryDbContext();
             this.Loaded += MainPage_Loaded;
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            cob.Genres.Add(new Genre() {GenreName="Hey23123" });
-            cob.SaveChanges();
-            var a = cob.Genres.ToList();
-            a = a;
         }
     }
 }

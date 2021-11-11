@@ -4,6 +4,7 @@ using LibraryRenewal.DAL.Exceptions;
 using LibraryRenewal.DAL.Interfaces;
 using LibraryRenewal.DAL.Interfaces.Converters;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +60,7 @@ namespace LibraryRenewal.DAL.Repositories
             {
                 updatedItem.ItemID = id;
                 _context.AbstractItems.Update(_abstractItemConverter.AbstractItemToAbstractItemDTO(updatedItem));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {

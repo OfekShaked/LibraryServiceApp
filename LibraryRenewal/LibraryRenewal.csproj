@@ -123,6 +123,18 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DisplayBookOptionsPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\ManagerMainPageViewModel.cs" />
+    <Compile Include="ViewModels\RegisterPageViewModel.cs" />
+    <Compile Include="ViewModels\ReportPageViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\DisplayBookOptionsPage.xaml.cs">
+      <DependentUpon>DisplayBookOptionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManagerMainPage.xaml.cs">
+      <DependentUpon>ManagerMainPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -148,6 +160,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\DisplayBookOptionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManagerMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -155,15 +175,20 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibraryRenewal.BLL\LibraryRenewal.BLL.csproj">
+      <Project>{2ddcfcb3-0dfc-45bb-9c8b-a6c52fcfed63}</Project>
+      <Name>LibraryRenewal.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibraryRenewal.Common\LibraryRenewal.Common.csproj">
       <Project>{2FC5141E-5D60-464B-9B3D-25B34A22AAC0}</Project>
       <Name>LibraryRenewal.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LibraryRenewal.DAL\LibraryRenewal.DAL.csproj">
-      <Project>{1246840b-2f79-481d-8e78-e283d505c363}</Project>
-      <Name>LibraryRenewal.DAL</Name>
+    <ProjectReference Include="..\LibraryRenewed.Design\LibraryRenewal.Design.csproj">
+      <Project>{4fa78ea0-84a1-4090-899b-5665e219a1bf}</Project>
+      <Name>LibraryRenewal.Design</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

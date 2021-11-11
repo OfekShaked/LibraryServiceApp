@@ -26,7 +26,7 @@ namespace LibraryRenewal.DAL.Repositories
             try
             {
                 _context.Sales.Add(_converter.SaleToSaleDTO(sale));
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsyncInherited();
             }
             catch (Exception e)
             {

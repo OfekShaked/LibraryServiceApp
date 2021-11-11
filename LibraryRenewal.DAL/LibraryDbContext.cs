@@ -21,7 +21,12 @@ namespace LibraryRenewal.DAL
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
-        public Task<int> SaveChangesAsync()
+        public void DetachEntity<T>(T entity)
+        {
+            Entry(entity).State = EntityState.Detached;
+        }
+
+        public Task<int> SaveChangesAsyncInherited()
         {
             return SaveChangesAsync();
         }
@@ -141,6 +146,7 @@ namespace LibraryRenewal.DAL
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        
     }
 }
 
