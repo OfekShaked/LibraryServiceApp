@@ -119,6 +119,7 @@ namespace LibraryRenewal.BLL.Services
             catch (Exception e)
             {
                 await CatchException(e, "Cannot get a genre atm try again later or call a manager");
+                return null;
             }
         }
 

@@ -169,11 +169,12 @@ namespace LibraryRenewal.BLL.Services
             try
             {
                 int discountToAdd, quantityToAdd, priceToAdd;
-                var isValid = _bookValidation.IsBookValid(name, writer, printdate, publisher, genre, discount, quantity, price, isbn, edition, summary, out discountToAdd, out quantityToAdd, out priceToAdd); int id = 0;
+                var isValid = _bookValidation.IsBookValid(name, writer, printdate, publisher, genre, discount, quantity, price, isbn, edition, summary, out discountToAdd, out quantityToAdd, out priceToAdd,out DateTime date);
+                int id = _generalValidations.IsItemIdValid(idToUpdate);
                 Book b1 = new Book();
+                b1.ItemID = id; 
                 b1.Name = name;
                 b1.Writer = writer;
-                DateTime date;
                 b1.PrintDate = DateTime.Parse(printdate);
                 b1.Publisher = publisher;
                 Genre g1 = await _genreRep.GetGenre(genre);

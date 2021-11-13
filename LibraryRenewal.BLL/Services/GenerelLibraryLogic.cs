@@ -42,10 +42,14 @@ namespace LibraryRenewal.BLL.Services
         ISaleConverter _saleConverter;
         IBookValidation _bookValidation;
         IGeneralValidations _generalValidations;
+        IJournalValidations _journalValidations;
+        IUserValidations _userValidations;
         public GeneralLibraryLogic()
         {
-            _bookValidation = new BookValidations();
             _generalValidations = new GeneralValidations();
+            _bookValidation = new BookValidations(_generalValidations);
+            _journalValidations = new JournalValidation(_generalValidations);
+            _userValidations = new UserValidations();
             _libraryDbContext = new LibraryDbContext();
             _userConverter = new UserConverter();
             _bookConverter = new BookConverter(_libraryDbContext);
@@ -60,9 +64,9 @@ namespace LibraryRenewal.BLL.Services
             _generalRep = new GeneralRepository(_genreRep,_libraryDbContext,_abstractItemConverter);
             _bookRep = new BookRepository(_genreRep,_libraryDbContext,_bookConverter);
             _journalRep = new JournalRepository(_libraryDbContext,_journalConverter);
-            _userValidity = new UserValidity(_userRep, _generalRep);
+            _userValidity = new UserValidity(_userRep, _generalRep,_userValidations);
             _bookService = new BookService(_bookRep, _genreRep, _saleService, _bookValidation, _generalValidations);
-            _journalService = new JournalService(_journalRep, _genreRep, _saleService);
+            _journalService = new JournalService(_journalRep, _genreRep, _saleService,_generalValidations,_journalValidations);
             _genereService = new GenreService(_genreRep, _generalRep);
             _libraryQueries = new LibraryQueries(_libraryDbContext);
         }
@@ -76,9 +80,9 @@ namespace LibraryRenewal.BLL.Services
             _journalRep = journalRep;
             _saleRep = saleRep;
             _saleService = new SaleService(_saleRep);
-            _userValidity = new UserValidity(_userRep, _generalRep);
+            _userValidity = new UserValidity(_userRep, _generalRep, _userValidations);
             _bookService = new BookService(_bookRep, _genreRep, _saleService, _bookValidation, _generalValidations);
-            _journalService = new JournalService(_journalRep, _genreRep, _saleService);
+            _journalService = new JournalService(_journalRep, _genreRep, _saleService, _generalValidations, _journalValidations);
             _genereService = new GenreService(_genreRep, _generalRep);
             _libraryQueries = new LibraryQueries(context);
         }
