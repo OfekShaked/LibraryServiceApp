@@ -22,32 +22,38 @@ namespace LibraryRenewal.BLL.Services
         }
         public async Task AddNewGenre(string name)
         {
-            if (await CheckGenre(name) == false)
+            try
             {
-                try
+                if (await CheckGenre(name) == false)
                 {
+
                     Genre g1 = new Genre(name);
                     await _genreRep.AddGenre(g1);
                 }
-                catch (Exception e)
+                else
                 {
-                    if (e is GenreException
-                         || e is DALException)
-                    {
-                        await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                        throw new BLLGenreException("Cannot add a new genre atm try again later or call a manager");
-                    }
-                    else
-                    {
-                        await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                        throw new LibraryException("Unknown error inform a manager!");
-                    }
+                    await GeneralLibraryLogic.SaveToLogFile("Genre Already Exist");
+                    throw new LibraryException("Genre already exist");
                 }
+            }
+            catch (Exception e)
+            {
+                await CatchException(e, "Cannot add a new genre atm try again later or call a manager");
+            }
+        }
+
+        private static async Task CatchException(Exception e, string message)
+        {
+            if (e is GenreException
+                                 || e is DALException)
+            {
+                await GeneralLibraryLogic.SaveToLogFile(e.ToString());
+                throw new BLLGenreException(message);
             }
             else
             {
-                await GeneralLibraryLogic.SaveToLogFile("Genre Already Exist");
-                throw new LibraryException("Genre already exist");
+                await GeneralLibraryLogic.SaveToLogFile(e.ToString());
+                throw new LibraryException("Unknown error inform a manager!");
             }
         }
 
@@ -62,17 +68,8 @@ namespace LibraryRenewal.BLL.Services
             }
             catch (Exception e)
             {
-                if (e is GenreException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLGenreException("Cannot check a genre atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
+                await CatchException(e, "Cannot check a genre atm try again later or call a manager");
+                return false;
             }
 
         }
@@ -87,17 +84,7 @@ namespace LibraryRenewal.BLL.Services
             }
             catch (Exception e)
             {
-                if (e is GenreException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLGenreException("Cannot delete a genre atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
+                await CatchException(e, "Cannot delete a genre atm try again later or call a manager");
             }
         }
 
@@ -114,17 +101,7 @@ namespace LibraryRenewal.BLL.Services
             }
             catch (Exception e)
             {
-                if (e is GenreException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLGenreException("Cannot get all genres atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
+                await CatchException(e, "Cannot get all genres atm try again later or call a manager");
             }
             return genres;
         }
@@ -141,17 +118,7 @@ namespace LibraryRenewal.BLL.Services
             }
             catch (Exception e)
             {
-                if (e is GenreException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLGenreException("Cannot get a genre atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
+                await CatchException(e, "Cannot get a genre atm try again later or call a manager");
             }
         }
 
@@ -167,17 +134,7 @@ namespace LibraryRenewal.BLL.Services
             }
             catch (Exception e)
             {
-                if (e is GenreException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLGenreException("Cannot update a genre atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
+                await CatchException(e, "Cannot update a genre atm try again later or call a manager");
             }
         }
     }

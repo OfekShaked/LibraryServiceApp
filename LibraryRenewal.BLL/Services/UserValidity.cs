@@ -1,5 +1,6 @@
 ﻿using LibraryRenewal.BLL.Exceptions;
 using LibraryRenewal.BLL.Interfaces;
+using LibraryRenewal.BLL.Interfaces.Validations;
 using LibraryRenewal.Common.Enums;
 using LibraryRenewal.Common.Models;
 using LibraryRenewal.DAL.Exceptions;
@@ -16,63 +17,34 @@ namespace LibraryRenewal.BLL.Services
     {
         IUserRepository _userRep;
         IGeneralRepository _generalRep;
-        public UserValidity(IUserRepository userRep, IGeneralRepository generalRep)
+        IUserValidations _userValidations;
+        public UserValidity(IUserRepository userRep, IGeneralRepository generalRep, IUserValidations userValidations)
         {
             _userRep = userRep;
             _generalRep = generalRep;
+            _userValidations = userValidations;
         }
         public async Task AddNewUser(string username, string password, string fullName, string phoneNumber, UserType type)
         {
-            if (username == "" || password == "" || fullName == "" || phoneNumber == "" || type == UserType.Null)
-            {
-                await GeneralLibraryLogic.SaveToLogFile("All user fields must be full!");
-                throw new BLLUserException("All user fields must be full!");
-            }
-            User u1 = new User();
             try
             {
+                var isValid = _userValidations.IsUserValid(username, password, fullName, phoneNumber, type);
+                User u1 = new User();
                 if (await CheckForUser(username) == UserType.Manager || await CheckForUser(username) == UserType.Employee)
                 {
                     await GeneralLibraryLogic.SaveToLogFile("Username already exist");
                     throw new BLLUserException("Username already exist");
                 }
-            }
-            catch (Exception e)
-            {
-                if (e is UserException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLUserException("Cannot add a new user atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
-            }
-            u1.Username = username;
-            u1.Password = password;
-            u1.FullName = fullName;
-            u1.PhoneNumber = phoneNumber;
-            u1.Type = type;
-            try
-            {
+                u1.Username = username;
+                u1.Password = password;
+                u1.FullName = fullName;
+                u1.PhoneNumber = phoneNumber;
+                u1.Type = type;
                 await _userRep.AddUser(u1);
             }
             catch (Exception e)
             {
-                if (e is UserException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLUserException("Cannot add a new user atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
+                await CatchException(e, "Cannot add a new user atm try again later or call a manager");
             }
         }
         /// <summary>
@@ -91,17 +63,8 @@ namespace LibraryRenewal.BLL.Services
             }
             catch (Exception e)
             {
-                if (e is UserException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLUserException("Cannot check for user atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
+                await CatchException(e, "Cannot check for a user atm try again later or call a manager");
+                return UserType.Null;
             }
         }
         /// <summary>
@@ -123,17 +86,23 @@ namespace LibraryRenewal.BLL.Services
             }
             catch (Exception e)
             {
-                if (e is UserException
-                     || e is DALException)
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new BLLUserException("Cannot verify a user atm try again later or call a manager");
-                }
-                else
-                {
-                    await GeneralLibraryLogic.SaveToLogFile(e.ToString());
-                    throw new LibraryException("Unknown error inform a manager!");
-                }
+                await CatchException(e, "Cannot verify a user atm try again later or call a manager");
+                return UserType.Null;
+            }
+        }
+
+        private static async Task CatchException(Exception e,string message)
+        {
+            if (e is UserException
+                                 || e is DALException)
+            {
+                await GeneralLibraryLogic.SaveToLogFile(e.ToString());
+                throw new BLLUserException(message);
+            }
+            else
+            {
+                await GeneralLibraryLogic.SaveToLogFile(e.ToString());
+                throw new LibraryException("Unknown error inform a manager!");
             }
         }
     }

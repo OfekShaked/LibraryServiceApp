@@ -49,7 +49,6 @@ C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\TestEf\obj\Debug\netcoreapp3.1\Tes
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\TestEf\obj\Debug\netcoreapp3.1\TestEf.AssemblyInfoInputs.cache
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\TestEf\obj\Debug\netcoreapp3.1\TestEf.AssemblyInfo.cs
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\TestEf\obj\Debug\netcoreapp3.1\TestEf.csproj.CoreCompileInputs.cache
-C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\TestEf\obj\Debug\netcoreapp3.1\TestEf.csproj.CopyComplete
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\TestEf\obj\Debug\netcoreapp3.1\TestEf.dll
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\TestEf\obj\Debug\netcoreapp3.1\TestEf.pdb
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\TestEf\obj\Debug\netcoreapp3.1\TestEf.genruntimeconfig.cache

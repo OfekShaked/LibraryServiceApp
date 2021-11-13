@@ -10,4 +10,3 @@ C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.DAL\obj\Debug\netst
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.DAL\obj\Debug\netstandard2.0\LibraryRenewal.DAL.csproj.CoreCompileInputs.cache
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.DAL\obj\Debug\netstandard2.0\LibraryRenewal.DAL.dll
 C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.DAL\obj\Debug\netstandard2.0\LibraryRenewal.DAL.pdb
-C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.DAL\obj\Debug\netstandard2.0\LibraryRenewal.DAL.csproj.CopyComplete

@@ -1,0 +1,2 @@
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.BLL\LibraryRenewal.BLL.csproj;x86
+C:\Users\ofeks\Desktop\Yahalom\LibraryRenewed\LibraryRenewal.Testing\LibraryRenewal.Testing.csproj;x86
